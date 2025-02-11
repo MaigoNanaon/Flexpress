@@ -1,6 +1,197 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <meta charset="UTF-8">
+    <title>Flexpéro Demo</title>
+    <style>
+        body {
+            background-color: #f0f2f5;
+            padding: 2rem;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .demo-item {
+            background: #f2fafa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .demo-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .audio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        audio {
+            width: 100%;
+            height: 40px;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .demo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .demo-image:hover {
+            transform: scale(1.05);
+        }
+            .circle-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 8px;
+    }
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: bold;
+      color: white;
+    }
+    .v-circle {
+      background-color: #2a2a80;
+    }
+            .v-circle:hover {
+            transform: scale(1.25);
+        }
+    .a-circle {
+      background-color: #672626;
+    }
+                .a-circle:hover {
+            transform: scale(1.25);
+        }
+    .d-circle {
+      background-color: #205b20;
+    }
+                .d-circle:hover {
+            transform: scale(1.25);
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+        .matrix-container {
+            max-width: 1500px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            padding: 2rem;
+        }
+
+        .audio-matrix {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #dee2e6;
+        }
+
+        .matrix-cell {
+            background: white;
+            padding: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .matrix-cell:hover {
+            background: #f8f9fa;
+        }
+                .pdf-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+        .matrix-title {
+            grid-column: 1 / -1;
+            background: #4a90e2;
+            color: white;
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        audio {
+            width: 100%;
+            filter: grayscale(0.2);
+            transition: filter 0.3s;
+        }
+
+        audio:hover {
+            filter: grayscale(0);
+        }
+
+        /* 隔行背景色 */
+        .audio-matrix > .matrix-cell:nth-child(14n+8) {
+            background: #ffffff;
+        }
+
+
+        /* 第6列特殊样式 */
+        .audio-matrix > .matrix-cell:nth-child(7n+6) {
+            background: #fffbf9;
+            font-style: italic;
+            color: #020101;
+        }
+
+        @media (max-width: 768px) {
+            .matrix-cell {
+                padding: 0.5rem;
+                min-height: 60px;
+            }
+            audio {
+                transform: scale(0.9);
+            }
+        }
+    </style>
+
   <meta charset="utf-8">
   <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
   <!-- Replace the content tag with appropriate information -->
@@ -24,7 +215,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Academic Project Page</title>
+  <title>Flexpéro Demo Page</title>
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,9 +243,11 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-2 publication-title">Flexpéro: Flexible Expressive Zero-shot Speech Refinement via Interactive In-context Learning</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
+
+              <!--
               <span class="author-block">
                 <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
                 <span class="author-block">
@@ -70,8 +263,8 @@
                   </div>
 
                   <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
+                    <div class="publication-links"> -->
+                         <!-- Arxiv PDF link
                       <span class="link-block">
                         <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark">
@@ -80,40 +273,10 @@
                         </span>
                         <span>Paper</span>
                       </a>
-                    </span>
+                    </span> -->
 
-                    <!-- Supplementary PDF link -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
 
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
 
-                <!-- ArXiv abstract Link -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
             </div>
           </div>
         </div>
@@ -123,22 +286,6 @@
 </section>
 
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video poster="" id="tree" autoplay controls muted loop height="100%">
-        <!-- Your video here -->
-        <source src="static/videos/banner_video.mp4"
-        type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
-    </div>
-  </div>
-</section>
-<!-- End teaser video -->
 
 <!-- Paper abstract -->
 <section class="section hero is-light">
@@ -148,162 +295,332 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
+            Controlling speech expressiveness has emerged as a critical research frontier in speech generation, focusing on synthesizing natural, human-like speech that accurately conveys intended psychological and emotional states. While numerous large models have demonstrated sufficient zero-shot controllability by conditioning the acoustic model on reference speech—which provides cues on speaker identity and style—they often fall short of precisely meeting desired emotional or prosodic targets. This limitation highlights the need to bridge the gap between coarse-grained style/timbre transfer and fine-grained emotional control. In this paper, we propose a novel speech refinement method that can flexibly and interactively enhance expressiveness on undesirable speech segments in zero-shot scenarios. We build a voice conversion model that harnesses the power of in-context learning, enabling users to specify emotion states and a set of "keyframes" and use them as conditionals to achieve precise control over prosody. Experimental results demonstrate that our approach achieves both zero-shot generation and fine-grained control without compromising speech quality or speaker similarity. </p>
         </div>
       </div>
     </div>
   </div>
 </section>
 <!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
+<br><BR>
+    <h2 class="title">Model Structure</h2>
+    <div class="pdf-container">
+        <canvas id="pdf-canvas"></canvas>
     </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
+
+    <!-- 引入pdf.js库 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <script>
+        // PDF文件路径
+        const pdfUrl = 'static/images/flex.drawio.pdf';
+
+        // 渲染PDF为图片
+        async function renderPDF(url) {
+            const loadingTask = pdfjsLib.getDocument(url);
+            const pdf = await loadingTask.promise;
+            const page = await pdf.getPage(1); // 渲染第一页
+
+            const scale = 1.5;
+            const viewport = page.getViewport({ scale });
+            const canvas = document.getElementById('pdf-canvas');
+            const context = canvas.getContext('2d');
+
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+
+            const renderContext = {
+                canvasContext: context,
+                viewport: viewport
+            };
+            await page.render(renderContext).promise;
+        }
+
+        // 调用渲染函数
+        renderPDF(pdfUrl);
+    </script>
 
 
 
+ <br><br><h2 class="title">Zero-shot Expressiveness Control Based on Voice Conversion</h2>
+<div class="matrix-container">
 
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
+        <div class="audio-matrix">
+            <!-- 标题行 -->
+            <div class="matrix-cell title-cell">Source content</div>
+            <div class="matrix-cell title-cell">Target speaker</div>
+            <div class="matrix-cell title-cell">Seed-VC</div>
+            <div class="matrix-cell title-cell">CosyVoice-VC</div>
+            <div class="matrix-cell title-cell">Flexpéro-None</div>
+            <div class="matrix-cell title-cell">Desired emotion</div>
+            <div class="matrix-cell title-cell">Flexpéro-Ctrl</div>
+
+            <!-- 音频数据行 -->
+            <!-- 每行7个音频单元 -->
+            <!-- 示例数据，请替换为实际音频文件 -->
+                                    <div class="matrix-cell"><audio controls src="static/vc/0019_000807/source.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000807/target.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000807/result.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000807/cosy.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000807/gen0.wav"></audio></div>
+            <div class="matrix-cell">Agitated</div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000807/gen.wav"></audio></div>
+
+                        <div class="matrix-cell"><audio controls src="static/vc/0015_000388/source.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0015_000388/target.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0015_000388/result.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0015_000388/cosy.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0015_000388/gen0.wav"></audio></div>
+            <div class="matrix-cell">Calm</div>
+            <div class="matrix-cell"><audio controls src="static/vc/0015_000388/gen.wav"></audio></div>
+
+                        <div class="matrix-cell"><audio controls src="static/vc/0020_000638/source.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0020_000638/target.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0020_000638/result.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0020_000638/cosy.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0020_000638/gen0.wav"></audio></div>
+            <div class="matrix-cell">Angry</div>
+            <div class="matrix-cell"><audio controls src="static/vc/0020_000638/gen.wav"></audio></div>
+
+
+            <div class="matrix-cell"><audio controls src="static/vc/0013_000242/source.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0013_000242/target.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0013_000242/result.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0013_000242/cosy.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0013_000242/gen0.wav"></audio></div>
+            <div class="matrix-cell">Sad</div>
+            <div class="matrix-cell"><audio controls src="static/vc/0013_000242/gen.wav"></audio></div>
+
+            <div class="matrix-cell"><audio controls src="static/vc/0014_000135/source.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0014_000135/target.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0014_000135/result.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0014_000135/cosy.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0014_000135/gen0.wav"></audio></div>
+            <div class="matrix-cell">Calm</div>
+            <div class="matrix-cell"><audio controls src="static/vc/0014_000135/gen.wav"></audio></div>
+
+
+                        <div class="matrix-cell"><audio controls src="static/vc/0019_000721/source.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000721/target.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000721/result.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000721/cosy.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000721/gen0.wav"></audio></div>
+            <div class="matrix-cell">Happy</div>
+            <div class="matrix-cell"><audio controls src="static/vc/0019_000721/gen.wav"></audio></div>
+
+            <div class="matrix-cell"><audio controls src="static/vc/0012_000506/source.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0012_000506/target.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0012_000506/result.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0012_000506/cosy.wav"></audio></div>
+            <div class="matrix-cell"><audio controls src="static/vc/0012_000506/gen0.wav"></audio></div>
+            <div class="matrix-cell">Angry</div>
+            <div class="matrix-cell"><audio controls src="static/vc/0012_000506/gen.wav"></audio></div>
+
+            <!-- 继续添加剩余6行... -->
         </div>
-      </div>
     </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
 
 
 
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
+<br><br>
   <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
+      <br>
+        <h2 class="title">Keyframe and VAD Control for Speech Refinement</h2>
+        <div class="demo-grid">
+            <!-- 重复8次demo-item -->
+            <div class="demo-item">
+                <div class="audio-group">
+                    Source [EN] Dogs are sitting by the door.
+                    <audio controls src="static/ok/03-01-02-02-02-02-01/ori.wav"></audio>
 
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
+                </div>
+                Control method
+                    <div class="circle-container">
+  <div class="circle v-circle">V +0.2</div>
+  <div class="circle a-circle">A ±0.0</div>
+  <div class="circle d-circle">D +0.1</div>
+</div><BR>
+                    Keyframe Input
+                <div class="image-container">
 
+                    <img src="static/ok/03-01-02-02-02-02-01/res.png" alt="演示图片" width="600" height="120" class="demo-image">
+                    </div>
+                    <div class="audio-group">
+                    <BR>
+                        Output
+                        <audio controls src="static/ok/03-01-02-02-02-02-01/gen.wav"></audio>
+                </div>
+            </div>
+
+                        <div class="demo-item">
+                <div class="audio-group">
+                    Source [EN] Sound the horn if you need more.
+                    <audio controls src="static/ok/female1_angry_15a_1/ori.wav"></audio>
+
+                </div>
+                Control method
+                    <div class="circle-container">
+  <div class="circle v-circle">V +0.1</div>
+  <div class="circle a-circle">A +0.1</div>
+  <div class="circle d-circle">D ±0.0</div>
+</div><BR>
+                    Keyframe Input
+                <div class="image-container">
+
+                    <img src="static/ok/female1_angry_15a_1/res.png" alt="演示图片" width="600" height="120" class="demo-image">
+                    </div>
+                    <div class="audio-group">
+                    <BR>
+                        Output
+                        <audio controls src="static/ok/female1_angry_15a_1/gen.wav"></audio>
+                </div>
+            </div>
+
+                        <div class="demo-item">
+                <div class="audio-group">
+                    Source [JA] 秘密を打ち明けるつもりは、さらさら無いよ。 (Himitsuwo uchiakerutsumoriwa sarasaranaiyo.)
+                    <audio controls src="static/ok/00500012/ori.wav"></audio>
+
+                </div>
+                Control method
+                    <div class="circle-container">
+  <div class="circle v-circle">V -0.2</div>
+  <div class="circle a-circle">A +0.2</div>
+  <div class="circle d-circle">D +0.2</div>
+</div><BR>
+                    Keyframe Input
+                <div class="image-container">
+
+                    <img src="static/ok/00500012/res.png" alt="演示图片" width="600" height="120" class="demo-image">
+                    </div>
+                    <div class="audio-group">
+                    <BR>
+                        Output
+                        <audio controls src="static/ok/00500012/gen.wav"></audio>
+                </div>
+            </div>
+                        <div class="demo-item">
+                <div class="audio-group">
+                    Source [JA] しょうがねぇーな、着替えてこいよ。 (Shōganeena, kigaete koiyo.)
+                    <audio controls src="static/ok/10600009/ori.wav"></audio>
+
+                </div>
+                Control method
+                    <div class="circle-container">
+  <div class="circle v-circle">V ±0.0</div>
+  <div class="circle a-circle">A +0.1</div>
+  <div class="circle d-circle">D +0.2</div>
+</div><BR>
+                    Keyframe Input
+                <div class="image-container">
+
+                    <img src="static/ok/10600009/res.png" alt="演示图片" width="600" height="120" class="demo-image">
+                    </div>
+                    <div class="audio-group">
+                    <BR>
+                        Output
+                        <audio controls src="static/ok/10600009/gen.wav"></audio>
+                </div>
+            </div>
+                        <div class="demo-item">
+                <div class="audio-group">
+                    Source [KO] 오만과 편견 작품 오랜만에 보니까새로운 생각을 들었어요.  (Omangwa pyeongyeon jagpum olaenman-e bonikkasaeloun saeng-gag-eul deul-eoss-eoyo.)
+                    <audio controls src="static/ok/10000014/ori.wav"></audio>
+
+                </div>
+                Control method
+                    <div class="circle-container">
+  <div class="circle v-circle">V +0.2</div>
+  <div class="circle a-circle">A +0.3</div>
+  <div class="circle d-circle">D ±0.0</div>
+</div><BR>
+                    Keyframe Input
+                <div class="image-container">
+
+                    <img src="static/ok/10000014/resx.png" alt="演示图片" width="600" height="120" class="demo-image">
+                    </div>
+                    <div class="audio-group">
+                    <BR>
+                        Output
+                        <audio controls src="static/ok/10000014/gen.wav"></audio>
+                </div>
+            </div>
+                        <div class="demo-item">
+                <div class="audio-group">
+                    Source [KO] 또 저도 그 순간에 너무 불안했고 힘들었어요. (Tto jeodo geu sungan-e neomu bul-anhaessgo himdeul-eoss-eoyo.)
+                    <audio controls src="static/ok/07000078/ori.wav"></audio>
+
+                </div>
+                Control method
+                    <div class="circle-container">
+  <div class="circle v-circle">V -0.1</div>
+  <div class="circle a-circle">A ±0.0</div>
+  <div class="circle d-circle">D -0.1</div>
+</div><BR>
+                    Keyframe Input
+                <div class="image-container">
+
+                    <img src="static/ok/07000078/res.png" alt="演示图片" width="600" height="120" class="demo-image">
+                    </div>
+                    <div class="audio-group">
+                    <BR>
+                        Output
+                        <audio controls src="static/ok/07000078/gen.wav"></audio>
+                </div>
+            </div>
+            <div class="demo-item">
+                <div class="audio-group">
+                    Source [ZH] 我们可以去钓鱼、聊天还有野营。(Wǒmen kěyǐ qù diàoyú, liáotiān hái yǒu yěyíng.)
+                    <audio controls src="static/ok/0009_000766/ori.wav"></audio>
+
+                </div>
+                Control method
+                    <div class="circle-container">
+  <div class="circle v-circle">V +0.2</div>
+  <div class="circle a-circle">A +0.2</div>
+  <div class="circle d-circle">D ±0.0</div>
+</div><BR>
+                    Keyframe Input
+                <div class="image-container">
+
+                    <img src="static/ok/0009_000766/res.png" alt="演示图片" width="600" height="120" class="demo-image">
+                    </div>
+                    <div class="audio-group">
+                    <BR>
+                        Output
+                        <audio controls src="static/ok/0009_000766/gen.wav"></audio>
+                </div>
+            </div>
+                        <div class="demo-item">
+                <div class="audio-group">
+                    Source [ZH] 要改变现状，就得改变自己。(Yào gǎibiàn xiànzhuàng, jiù dé gǎibiàn zìjǐ.)
+                    <audio controls src="static/ok/e0290/ori.wav"></audio>
+
+                </div>
+                Control method
+                    <div class="circle-container">
+  <div class="circle v-circle">V -0.1</div>
+  <div class="circle a-circle">A +0.1</div>
+  <div class="circle d-circle">D -0.2</div>
+</div><BR>
+                    Keyframe Input
+                <div class="image-container">
+
+                    <img src="static/ok/e0290/res.png" alt="演示图片" width="600" height="120" class="demo-image">
+                    </div>
+                    <div class="audio-group">
+                    <BR>
+                        Output
+                        <audio controls src="static/ok/e0290/gen.wav"></audio>
+                </div>
+            </div>
+            <!-- 粘贴剩余7个demo-item -->
+            <!-- 每个demo-item结构相同 -->
         </div>
-      </div>
     </div>
-  </div>
-</footer>
 
-<!-- Statcounter tracking code -->
-  
+
+<br><br><br><br><br><br>
+
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
     <!-- End of Statcounter Code -->
